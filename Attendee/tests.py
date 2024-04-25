@@ -11,3 +11,8 @@ class AtetendeeURLTest(TestCase):
     def test_create_attendee_url_is_correct(self):
         reverse_url = reverse('attendee:create_attendee')
         self.assertEqual(reverse_url, '/attendee/create_attendee/')
+        
+    def test_update_attendee_url_is_correct(self):
+        reverse_url = reverse('attendee:update_attendee', args=[1])
+        self.assertEqual(reverse_url, '/attendee/update_attendee/1/')
+        
