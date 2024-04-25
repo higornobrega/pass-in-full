@@ -35,3 +35,7 @@ class AttendeeViewTest(TestCase):
     def test_attendee_update_attendee_is_correct(self):
         view = resolve(reverse('attendee:update_attendee', kwargs={'pk': 1}))
         self.assertIs(view.func, views.update_attendee)
+    
+    def test_attendee_delete_attendee_is_correct(self):
+        view = resolve(reverse('attendee:delete_attendee', kwargs={'pk': 1}))
+        self.assertIs(view.func, views.delete_attendee)
