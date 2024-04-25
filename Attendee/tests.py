@@ -16,3 +16,6 @@ class AtetendeeURLTest(TestCase):
         reverse_url = reverse('attendee:update_attendee', args=[1])
         self.assertEqual(reverse_url, '/attendee/update_attendee/1/')
         
+def test_delete_attendee_url_is_correct(self):
+    reverse_url = reverse('attendee:delete_attendee', args=[1])
+    self.assertEqual(reverse_url, '/attendee/delete_attendee/1/')
