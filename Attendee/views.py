@@ -10,3 +10,6 @@ def create_attendee(request: HttpRequest) -> HttpResponse:
 
 def update_attendee(request: HttpRequest, pk: int) -> HttpResponse:
     return render(request, 'attendee/update_attendee.html')
+
+def delete_attendee(request: HttpRequest, pk: int) -> HttpResponse:
+    return render(request, 'attendee/list_attendee.html')
