@@ -3,5 +3,10 @@
     <title>Lista de Attendee</title>
 </head>
 <body>
-    <h1>dasdasdas</h1>
+    {% for attendee in attendees %}
+    <p>{{ attendee.name }}</p>
+    <p>{{ attendee.email }}</p>
+    <p>{{ attendee.createdAt }}</p>
+        
+    {% endfor %}
 {% endblock content%}
