@@ -1,7 +1,9 @@
+from django.contrib.auth.models import User
 from django.test import TestCase
 from django.urls import resolve, reverse
 
 from Attendee import views
+from Attendee.models import Attendee
 
 
 class AttendeeViewTest(TestCase):
@@ -53,4 +55,7 @@ class AttendeeViewTest(TestCase):
         response = self.client.get(reverse('attendee:delete_attendee', kwargs={'pk': 1}))
         self.assertTemplateUsed(response,'attendee/list_attendee.html' )
     
-    
+    def test_attendee_list_template_loads_attendee(self):
+        attendee = Attendee.objects.create(name='Higor Stefany dos Santos Nóbrega', email='higorst.nobrega@gmail.com')
+        response = self.client.get(reverse('attendee:list_attendee'))
+        self.assertEquals((len(response.context['attendees'])), 1)
