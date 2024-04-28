@@ -3,10 +3,15 @@ from django.test import TestCase
 from django.urls import resolve, reverse
 
 from Attendee import views
-from Attendee.models import Attendee
+
+from .test_attendee_base import AttendeeTestBase
 
 
-class AttendeeViewTest(TestCase):
+class AttendeeViewTest(AttendeeTestBase):
+    
+    def tearDown(self) -> None:
+        return super().tearDown()
+    
     def test_attendee_create_attendee_view_function_is_correct(self):
         view = resolve(reverse('attendee:create_attendee'))
         self.assertIs(view.func, views.create_attendee)
@@ -56,6 +61,6 @@ class AttendeeViewTest(TestCase):
         self.assertTemplateUsed(response,'attendee/list_attendee.html' )
     
     def test_attendee_list_template_loads_attendee(self):
-        attendee = Attendee.objects.create(name='Higor Stefany dos Santos Nóbrega', email='higorst.nobrega@gmail.com')
         response = self.client.get(reverse('attendee:list_attendee'))
-        self.assertEquals((len(response.context['attendees'])), 1)
+        self.assertEqual((len(response.context['attendees'])), 1)
+        
