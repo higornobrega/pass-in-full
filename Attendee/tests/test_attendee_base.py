@@ -5,5 +5,8 @@ from Attendee.models import Attendee
 
 class AttendeeTestBase(TestCase):
     def setUp(self) -> None:
-        attendee = Attendee.objects.create(name='Higor Stefany dos Santos Nóbrega', email='higorst.nobrega@gmail.com')
         return super().setUp()
+
+    def make_attendee(self, name = 'Higor Stefany dos Santos Nóbrega', email='higorst.nobrega@gmail.com'):
+        return Attendee.objects.create(name=name, email=email)
+        
