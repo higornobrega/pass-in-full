@@ -14,3 +14,8 @@ class AttendeeModelTest(AttendeeTestBase):
         with self.assertRaises(ValidationError):
             self.attendee.full_clean()    
             
+    def test_attendee_string_representation(self):
+        self.attendee.name = 'Higor Nóbrega'
+        self.attendee.full_clean()
+        self.attendee.save()
+        self.assertEqual(str(self.attendee), 'Higor Nóbrega') 
