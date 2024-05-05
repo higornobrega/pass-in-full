@@ -10,3 +10,6 @@ class Attendee(models.Model):
     email = models.EmailField(max_length=255)
     createdAt = models.DateTimeField(auto_now_add=True)
     
+    def __str__(self) -> str:
+        return str(self.name)
+    
